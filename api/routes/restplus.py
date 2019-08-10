@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 api = Api(
     version='1.0',
     title='AWS Cognito Management Restful API',
-    description='Cognito Management API, allows you to manage users/appclients/ servers resources.'
+    description='Cognito Management API, allows you to manage users/appclients resources.'
     )
 
 @api.errorhandler
