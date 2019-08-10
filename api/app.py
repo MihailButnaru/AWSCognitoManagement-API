@@ -7,9 +7,9 @@ from api.resources.users import ns as users_namespace
 
 
 def create_app(config):
+    """ Flask Initialization application
     """
-    """
-    logger = logging.getLogger(__name__)
+    logging.getLogger(__name__)
 
     # Flask
     app = Flask(__name__)
