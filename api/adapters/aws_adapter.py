@@ -15,6 +15,7 @@ class AWSConnection():
             Args:
                 config (str): config parameters
         """
+        self.logger = logging.getLogger(__name__)
         self.conn = boto3.client(
             config.AWS_SERVICE,
             aws_access_key_id=config.AWS_ACCESS_KEY_ID,
