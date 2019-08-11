@@ -3,7 +3,7 @@
 from flask_restplus import fields
 from api.routes.restplus import api
 
-namespace = api.namespace('users', description='Users operations.')
+namespace = api.namespace('users', description='Users Management operations.')
 
 user_model = api.model('Users', {
     'username': fields.String(

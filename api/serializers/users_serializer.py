@@ -11,17 +11,29 @@ class UserSerializer:
             Args:
                 users (list) : list of users
         """
-        attributes = []
-        for user in users['Users']:
+        if isinstance(users, list):
+            attributes = []
+            for user in users:
+                content = {}
+                content['username'] = user['Username']
+                for attr in user['Attributes']:
+                    if attr['Name'] == 'custom:firstname':
+                        content['firstname'] = attr['Value']
+                    elif attr['Name'] == 'custom:surname':
+                        content['surname'] = attr['Value']
+                    elif attr['Name'] == 'email':
+                        content['email'] = attr['Value']
+                attributes.append(content)
+            return attributes
+        else:
             content = {}
-            content['username'] = user['Username']
-            for attr in user['Attributes']:
+            content['username'] = users['Username']
+            for attr in users['UserAttributes']:
                 if attr['Name'] == 'custom:firstname':
                     content['firstname'] = attr['Value']
                 elif attr['Name'] == 'custom:surname':
                     content['surname'] = attr['Value']
                 elif attr['Name'] == 'email':
                     content['email'] = attr['Value']
-            attributes.append(content)
-        return attributes
+            return content
         
