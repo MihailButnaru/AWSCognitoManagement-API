@@ -14,9 +14,9 @@ user_model = api.model('Users', {
         required=True,
         description='The Firstname of the user'
     ),
-    'lastname': fields.String(
+    'surname': fields.String(
         required=True,
-        description='The Lastname of the user'
+        description='The Surname of the user'
     ),
     'email': fields.String(
         required=True,

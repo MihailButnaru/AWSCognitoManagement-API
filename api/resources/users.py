@@ -16,13 +16,13 @@ class UserList(Resource):
         super().__init__(*args, **kwargs)
         self.user_manager = kwargs['user_manager']
 
-    # @ns.marshal_list_with(user_model)
+    @ns.marshal_list_with(user_model)
     @ns.response(200, 'Success')
     @ns.response(404, 'Validation Error')
     @ns.response(500, 'Internal Server Error')
     def get(self):
         """ List all users """
-        return user_manager.get_users(), 200
+        return self.user_manager.get_users(), 200
 
 
     @ns.response(200, 'Success')
