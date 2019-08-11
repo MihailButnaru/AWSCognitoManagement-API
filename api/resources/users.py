@@ -59,19 +59,28 @@ class User(Resource):
         except Exception:
             raise ValueError('User not found!')
 
-    @ns.response(204, 'User Deleted')
+    @ns.response(200, 'Success')
     def delete(self, username):
         """
         Delete a user given its username as an identifier.
         """
-        pass
+        try:
+            self.user_manager.delete_user(username)
+            return {'message': 'User was deleted successful'}, 200
+        except Exception as error:
+            raise error
 
-    @ns.expect(user_model)
+    # @ns.expect(user_model)
     @ns.marshal_with(user_model)
     def put(self, username):
         """
         Update a user given its username as an identifier.
         """
-        pass
+        try:
+            payload = request.get_json(force=True)
+            self.user_manager.edit_user(**payload)
+            return payload, 200
+        except Exception as error:
+            raise error
 
     

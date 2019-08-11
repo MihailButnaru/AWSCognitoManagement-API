@@ -70,3 +70,43 @@ class CognitoUserManagement():
             return serilize.serializer(response, 'users')
         except Exception as error:
             raise error
+
+    def delete_user(self, username):
+        """
+        Deletes a user based on the username identifier.
+        """
+        try:
+            response = self.aws_conn.admin_delete_user(
+                UserPoolId=self._config.AWS_USER_POOL_ID,
+                Username=username
+            )
+            return response
+        except Exception as error:
+            raise error
+
+    def edit_user(self, **kwargs):
+        """
+        Updates the specified user attributes
+        """
+        try:
+            response = self.aws_conn.admin_update_user_attributes(
+                UserPoolId=self._config.AWS_USER_POOL_ID,
+                Username=kwargs['username'],
+                UserAttributes=[
+                    {
+                        'Name': 'custom:firstname',
+                        'Value': kwargs['firstname']
+                    },
+                    {
+                        'Name': 'custom:surname',
+                        'Value': kwargs['surname']
+                    },
+                    {
+                        'Name': 'email',
+                        'Value': kwargs['email']
+                    }
+                ]
+            )
+            return response
+        except Exception as error:
+            raise error
