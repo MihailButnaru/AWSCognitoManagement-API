@@ -1,6 +1,8 @@
 # Copyright 2019 by Mihail Butnaru
 # All rights reserved.
+import json
 from api.config import Config
+from api.serializers.serializer import serilize
 """ User Implementation to get the AWS Cognito Data
 """
 class CognitoUserManagement():
@@ -23,10 +25,7 @@ class CognitoUserManagement():
             response = self.aws_conn.list_users(
                 UserPoolId=self._config.AWS_USER_POOL_ID
             )
-            for users in response['Users']:
-                users['UserCreateDate'] = users['UserCreateDate'].isoformat()
-                users['UserLastModifiedDate'] = users['UserLastModifiedDate'].isoformat()
-            return response
+            return serilize.serializer(response, 'users')
         except Exception as error:
             raise error
 
