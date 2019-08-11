@@ -27,7 +27,26 @@ class AppClientsManagement():
             response = self._aws_conn.list_user_pool_clients(
                 UserPoolId=self._config.AWS_USER_POOL_ID
             )
-            print('test', response)
-            return response
+            return serilize.serializer(response, 'appclients')
         except Exception as error:
             raise error
+
+    def create_app_client(self):
+        """
+        """
+        pass
+
+    def get_app_client(self):
+        """
+        """
+        pass
+
+    def edit_app_client(self):
+        """
+        """
+        pass
+
+    def delete_app_client(self):
+        """
+        """
+        pass

@@ -1,7 +1,7 @@
 # Copyright 2019 by Mihail Butnaru
 # All rights reserved.
 from api.serializers.users_serializer import UserSerializer
-
+from api.serializers.app_clients_serializer import AppClientSerializer
 
 class SerializerFactory:
     """
@@ -17,8 +17,8 @@ class SerializerFactory:
         """
         if service == 'users':
             return UserSerializer()
-        elif service == 'apiclients':
-            pass
+        elif service == 'appclients':
+            return AppClientSerializer()
         elif service == 'scopes':
             pass
         else:
