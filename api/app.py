@@ -4,7 +4,8 @@ import logging
 from api.routes.restplus import api
 from flask import Flask, Blueprint
 from api.resources.users import ns as users_namespace
-
+from api.resources.app_clients import ns as appclients_namespace
+from api.resources.scopes import ns as scopes_namespace
 
 def create_app(config):
     """ Flask Initialization application
@@ -24,6 +25,8 @@ def create_app(config):
     blueprint = Blueprint('api', __name__, url_prefix='/api/v1')
     api.init_app(blueprint)
     api.add_namespace(users_namespace)
+    api.add_namespace(appclients_namespace)
+    api.add_namespace(scopes_namespace)
     app.register_blueprint(blueprint)
 
     return app
