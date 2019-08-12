@@ -5,7 +5,7 @@ from flask_restplus import Resource
 from api.routes.restplus import api
 from api.models.users import namespace as ns
 from api.models.users import user_model
-from api.core import user_manager
+from api.wrappers import user_manager
 
 @ns.route('/', resource_class_kwargs={'user_manager': user_manager})
 class UserList(Resource):
