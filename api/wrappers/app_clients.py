@@ -31,22 +31,53 @@ class AppClientsManagement():
         except Exception as error:
             raise error
 
-    def create_app_client(self):
+    def create_app_client(self, **kwargs):
         """
+        Creates the user pool based on custom parameters
         """
-        pass
+        try:
+            response = self._aws_conn.create_user_pool_client(
+                UserPoolId=self._config.AWS_USER_POOL_ID,
+                ClientName=kwargs['name'],
+                GenerateSecret=True,
+                ReadAttributes=[
+                    'custom:firstname',
+                    'custom:surname',
+                    'email'
+                ],
+                AllowedOAuthFlows=['client_credentials'],
+                AllowedOAuthScopes=[kwargs['scope']],
+                AllowedOAuthFlowsUserPoolClient=True
+            )
+            return response
+        except Exception as error:
+            raise error
 
-    def get_app_client(self):
+    def get_app_client(self, client_id):
         """
+        Returns the configuration information and metadata of
+        the specified app client
         """
-        pass
+        try:
+            response = self._aws_conn.describe_user_pool_client(
+                UserPoolId=self._config.AWS_USER_POOL_ID,
+                ClientId=client_id
+            )
+            response['UserPoolClient']['LastModifiedDate'].isoformat()
+            response['UserPoolClient']['CreationDate'].isoformat()
+            return response
+        except Exception as error:
+            raise error 
 
-    def edit_app_client(self):
+    def delete_app_client(self, client_id):
         """
+        Deletes the user pool based on the clientId
         """
-        pass
-
-    def delete_app_client(self):
-        """
-        """
-        pass
+        try:
+            response = self._aws_conn.delete_user_pool_client(
+                UserPoolId=self._config.AWS_USER_POOL_ID,
+                ClientId=client_id
+            )
+            return response
+        except Exception as error:
+            raise error

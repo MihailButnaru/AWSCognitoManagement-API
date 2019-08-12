@@ -34,4 +34,37 @@ class AppClientsList(Resource):
         """
         Creates a new app client
         """
-        pass
+        try:
+            payload = request.get_json(force=True)
+            self.app_client_manager.create_app_client(**payload)
+            return payload, 201
+        except Exception as error:
+            raise error
+
+@ns.route('/<clientId>',  resource_class_kwargs={'app_client_manager': app_client_manager})
+class AppClients(Resource):
+    """
+    Shows a single app client and lets you delete the app client
+    """
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.app_client_manager = kwargs['app_client_manager']
+
+    @ns.response(200, 'Success')
+    @ns.response(403, 'Validation Error')
+    def get(self, clientId):
+        """
+        """
+        try:
+            return self.app_client_manager.get_app_client(clientId), 200
+        except Exception:
+            raise ValueError('AppClient with the specified Id does not exist!')
+
+    @ns.response(200, 'Success')
+    def delete(self, clientId):
+        """
+        """
+        try:
+            return self.app_client_manager.delete_app_client(clientId), 200
+        except Exception:
+            raise ValueError('AppClient with the specified Id does not exist!')
