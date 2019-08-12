@@ -2,19 +2,22 @@
 # All rights reserved.
 import json
 from api.serializers.serializer import serilize
-""" User Implementation to get the AWS Cognito Data
+from api.adapters.aws_adapter import init_aws_connection
+""" 
+User Implementation to get the AWS Cognito Data
 """
-class CognitoUserManagement():
-    """ Cognito User Management Service
+class UserManagement():
+    """ 
+    Cognito User Management Service
     """
-    def __init__(self, config, conn):
+    def __init__(self, config):
         """ 
             Args:
                 config(str) : configuration parameters
                 conn(str) : cognito connect
         """
         self._config = config
-        self.aws_conn = conn
+        self.aws_conn = init_aws_connection(self._config)
         
     def get_users(self):
         """ 

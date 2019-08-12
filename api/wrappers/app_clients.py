@@ -1,6 +1,7 @@
 # Copyright 2019 by Mihail Butnaru
 # All rights reserved.
 import json
+from api.adapters.aws_adapter import init_aws_connection
 from api.serializers.serializer import serilize
 """
 App Clients are entities within a user environment[pool] that
@@ -10,14 +11,13 @@ class AppClientsManagement():
     """
     AppClients Management Service
     """
-    def __init__(self, config, connection):
+    def __init__(self, config):
         """
             Args:
                 config(str): configuration parameters
-                connection(str): aws connection
         """
         self._config = config
-        self._aws_conn = connection
+        self._aws_conn = init_aws_connection(self._config)
 
     def get_app_clients(self):
         """

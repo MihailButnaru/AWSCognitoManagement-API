@@ -4,7 +4,7 @@ from flask import request, jsonify
 from flask_restplus import Resource
 from api.models.app_clients import namespace as ns
 from api.models.app_clients import app_client_model
-from api.core import app_client_manager
+from api.wrappers import app_client_manager
 
 @ns.route('/', resource_class_kwargs={'app_client_manager': app_client_manager})
 class AppClientsList(Resource):
