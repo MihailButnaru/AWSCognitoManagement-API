@@ -1,6 +1,6 @@
 <div align="center">
 <h1> AWS Cognito Management RESTful API </h1>
-<p1>Simple and complete Restful API that allows you to manage users, appclients and scopes.</p1>
+<p1>Simple and complete Restful API that allows you to manage users, appclients and resource servers.</p1>
 </div>
 <hr/>
 
