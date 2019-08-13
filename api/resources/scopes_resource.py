@@ -35,4 +35,9 @@ class ScopesList(Resource):
     def post(self):
         """
         """
-        pass
+        try:
+            payload = request.get_json(force=True)
+            self.scope_manager.create_scope(**payload)
+            return payload, 201
+        except Exception as error:
+            raise error 

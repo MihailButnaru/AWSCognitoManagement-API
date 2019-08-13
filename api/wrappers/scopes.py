@@ -37,6 +37,12 @@ class ScopesManagement():
 
     def create_scope(self, **kwargs):
         """
+        Creates OAuth 2.0 resource server that defines custom scope in it.
+            Args:
+                identifier (str): a unique resource server identifier
+                name (str): a friendly name for the resource server
+                scopeName (str): the name of the scope
+                scopeDescription (str): the description of the scope
         """
         try:
             response = self._aws_conn.create_resource_server(
