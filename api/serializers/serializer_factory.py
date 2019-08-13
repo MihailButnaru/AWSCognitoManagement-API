@@ -2,6 +2,7 @@
 # All rights reserved.
 from api.serializers.users_serializer import UserSerializer
 from api.serializers.app_clients_serializer import AppClientSerializer
+from api.serializers.scopes_serializer import ScopesSerializer
 
 class SerializerFactory:
     """
@@ -20,7 +21,7 @@ class SerializerFactory:
         elif service == 'appclients':
             return AppClientSerializer()
         elif service == 'scopes':
-            pass
+            return ScopesSerializer()
         else:
             raise ValueError(service)
 
