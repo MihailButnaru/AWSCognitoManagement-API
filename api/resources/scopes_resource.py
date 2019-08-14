@@ -34,6 +34,8 @@ class ScopesList(Resource):
     @ns.response(500, 'Internal Server Error')
     def post(self):
         """
+        Create a new resource server by providing the identifier,
+        scope name and scope description.
         """
         try:
             payload = request.get_json(force=True)
@@ -41,3 +43,27 @@ class ScopesList(Resource):
             return payload, 201
         except Exception as error:
             raise error 
+
+@ns.route('/<identifier>', resource_class_kwargs={'scope_manager': scope_manager})
+class Scopes(Resource):
+    """
+    Shows a single resource server, allows to be deleted based on the unique identifier.
+    """
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.scope_manager = kwargs['scope_manager']
+
+    
+    @ns.response(404, 'Validation Error')
+    @ns.response(500, 'Internal Server Error')
+    def delete(self, identifier):
+        """
+        Deletes a resource server based on the unique identifier
+            Args:
+                identifier (str): the name of the scope
+        """
+        try:
+            return self.scope_manager.delete_scope(identifier)
+        except Exception as error:
+            raise error
