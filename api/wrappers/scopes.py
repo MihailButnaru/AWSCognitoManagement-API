@@ -60,10 +60,17 @@ class ScopesManagement():
         except Exception as error:
             raise error
 
-    def delete_scope(self, **kwargs):
+    def delete_scope(self, identifier):
         """
+        Deletes a resource server based on the
+        identifier. THe identifier is unique, must be stored
+        in a safe place and not to be shared.
         """
         try:
-            pass
+            response = self._aws_conn.delete_resource_server(
+                UserPoolId=self._config.AWS_USER_POOL_ID,
+                Identifier=identifier
+            )
+            return response
         except Exception as error:
             raise error
