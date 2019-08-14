@@ -59,3 +59,11 @@ class ScopesManagement():
             return response
         except Exception as error:
             raise error
+
+    def delete_scope(self, **kwargs):
+        """
+        """
+        try:
+            pass
+        except Exception as error:
+            raise error
