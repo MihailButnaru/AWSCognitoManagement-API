@@ -4,7 +4,7 @@
 </div>
 <hr/>
 
-## The problem
+## The problem 
 You want to access AWS Cognito resources through a customize API without touching the AWS UI. As part
 of this goal, AWS Cognito Management API allows you to access different Cognito resources very easy
 and efficient.
@@ -31,3 +31,5 @@ $ flask run
 ```
 
 ## Endpoints Structure
+
+## Deployment
