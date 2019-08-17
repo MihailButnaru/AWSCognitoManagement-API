@@ -67,4 +67,5 @@ Access the aws-api on ```localhost:5000/api/v1```
 
 ## License
 License © MIHAIL BUTNARU
+
 Made with 💖 Mihail Butnaru
