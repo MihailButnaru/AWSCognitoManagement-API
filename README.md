@@ -64,3 +64,7 @@ docker build -t aws-api .
 docker run -d -p 5000:5000 aws-api
 ```
 Access the aws-api on ```localhost:5000/api/v1```
+
+## License
+License © MIHAIL BUTNARU
+Made with 💖 Mihail Butnaru
