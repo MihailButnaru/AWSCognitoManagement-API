@@ -1,6 +1,5 @@
 # Copyright 2019 by Mihail Butnaru
 # All rights reserved.
-import json
 from api.serializers.serializer import serilize
 from api.adapters.aws_adapter import init_aws_connection
 """ 
@@ -14,7 +13,7 @@ class UserManagement():
         """ 
             Args:
                 config(str) : configuration parameters
-                conn(str) : cognito connect
+                conn(str) : cognito connector
         """
         self._config = config
         self.aws_conn = init_aws_connection(self._config)

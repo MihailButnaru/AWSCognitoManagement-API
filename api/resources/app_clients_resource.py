@@ -54,6 +54,7 @@ class AppClients(Resource):
     @ns.response(403, 'Validation Error')
     def get(self, clientId):
         """
+        Get's the specific client based on the clientId
         """
         try:
             return self.app_client_manager.get_app_client(clientId), 200
@@ -63,6 +64,7 @@ class AppClients(Resource):
     @ns.response(200, 'Success')
     def delete(self, clientId):
         """
+        Delete a client based on the clientId
         """
         try:
             return self.app_client_manager.delete_app_client(clientId), 200

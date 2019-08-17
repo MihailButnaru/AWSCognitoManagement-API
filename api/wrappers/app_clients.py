@@ -1,6 +1,5 @@
 # Copyright 2019 by Mihail Butnaru
 # All rights reserved.
-import json
 from api.adapters.aws_adapter import init_aws_connection
 from api.serializers.serializer import serilize
 """
@@ -9,7 +8,8 @@ has different permissions to call for accessing different resources.
 """
 class AppClientsManagement():
     """
-    AppClients Management Service
+    AppClients Management Service that controls the
+    flow of get/create/delete app clientss
     """
     def __init__(self, config):
         """
