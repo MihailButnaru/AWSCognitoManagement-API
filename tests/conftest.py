@@ -4,8 +4,9 @@
 Conftest used to import external plugins or modules.
 """
 import pytest
-from flask import Response, json
+from flask import Response as APIResponse, json
 from flask.testing import FlaskClient
+from werkzeug.utils import cached_property
 
 from api.app import create_app
 from api.config import Config
@@ -15,27 +16,25 @@ def app():
     """
     Set up global app for functional tests
     """
+    class Response(APIResponse):
+        @cached_property
+        def json(self):
+            return json.loads(self.data)
+
+    class APIClient(FlaskClient):
+        def open(self, *args, **kwargs):
+            if 'json' in kwargs:
+                kwargs['data'] = json.dumps(kwargs.pop('json'))
+                kwargs['content_type'] = 'application/json'
+            return super(APIClient, self).open(*args, **kwargs)
+
     _config = Config()
     app = create_app(_config)
-    app.test_client = ApiClient
-    app.response = ApiResponse
+    app.response_class = Response
+    app.test_client_class = APIClient
+    app.testing = True
     return app
 
-
-class ApiClient(FlaskClient):
-    def open(self, *args, **kwargs):
-        json_data = kwargs.pop('json', None)
-
-        if json_data is not None:
-            kwargs['data'] = json.dumps(json_data)
-            kwargs['content-type'] = 'application/json'
-        return super(ApiClient, self).open(*args, **kwargs)
-
-class ApiResponse(Response):
-    @property
-    def json(self):
-        return json.loads(self.data)
-
 @pytest.fixture
-def api_client(client):
-    return client.test_client
+def api_client(app):
+    return app.test_client()
