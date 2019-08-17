@@ -19,5 +19,5 @@ class ScopesSerializer:
             content = {}
             content['name'] = scp['Name'] + '/' + scp['Scopes'][0]['ScopeName']
             scope.append(content)
-        return {'Scopes' : scope }
+        return {'Scopes' : scope}
 

@@ -19,4 +19,4 @@ class AppClientSerializer:
             content = {}
             content['name'] = client['ClientName']
             clients.append(content)
-        return clients
+        return {'Clients' : clients}
