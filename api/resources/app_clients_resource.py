@@ -16,7 +16,6 @@ class AppClientsList(Resource):
         super().__init__(*args, **kwargs)
         self.app_client_manager = kwargs['app_client_manager']
 
-    @ns.marshal_list_with(app_client_model)
     @ns.response(200, 'Success')
     @ns.response(404, 'Validation Error')
     @ns.response(500, 'Internal Server Error')

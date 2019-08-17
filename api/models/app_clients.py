@@ -14,4 +14,4 @@ app_client_model = api.model('AppClients', {
         required=True,
         description='Scope of the app'
     )
-})
+}, mask='{name}')
