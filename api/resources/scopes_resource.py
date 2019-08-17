@@ -12,7 +12,6 @@ class ScopesList(Resource):
     Shows a list of scopes that were created in the user pool, name and description
     of the scope is displayed too in order to understand more about the scope.
     """
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.scope_manager = kwargs['scope_manager']

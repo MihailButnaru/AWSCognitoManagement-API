@@ -10,7 +10,7 @@ from api.wrappers import user_manager
 @ns.route('/', resource_class_kwargs={'user_manager': user_manager})
 class UserList(Resource):
     """ Shows a list of all the users, and lets
-    you POST to add a new user.
+    you add a new user.
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -70,7 +70,6 @@ class User(Resource):
         except Exception as error:
             raise error
 
-    # @ns.expect(user_model)
     @ns.marshal_with(user_model)
     def put(self, username):
         """
