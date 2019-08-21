@@ -4,6 +4,13 @@
 </div>
 <hr/>
 
+
+<div align="center">
+  
+[![codebeat badge](https://codebeat.co/badges/4bc85150-b64e-4faa-8a3c-e1658a15217b)](https://codebeat.co/projects/github-com-mihailbutnaru-awscognitomanagement-api-master)
+
+</div>
+
 ## The problem 
 You want to access AWS Cognito resources through a customize API without touching the AWS UI. As part
 of this goal, AWS Cognito Management API allows you to access different Cognito resources very easy
@@ -65,7 +72,7 @@ docker run -d -p 5000:5000 aws-api
 ```
 Access the aws-api on ```localhost:5000/api/v1```
 
-## License
+## License & Author
 License © MIHAIL BUTNARU
 
 Made with 💖 Mihail Butnaru
