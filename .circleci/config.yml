@@ -10,4 +10,7 @@ jobs:
             sudo pip install pytest
       - run:
           command:
+            sudo pip install -r requirements.txt
+      - run:
+          command:
             pytest -m tests
