@@ -22,12 +22,7 @@ class UserSerializer:
             content = {}
             content['username'] = user['Username']
             for attr in user['Attributes']:
-                if attr['Name'] == 'custom:firstname':
-                    content['firstname'] = attr['Value']
-                elif attr['Name'] == 'custom:surname':
-                    content['surname'] = attr['Value']
-                elif attr['Name'] == 'email':
-                    content['email'] = attr['Value']
+                self.content_formatter(content, attr)
             attributes.append(content)
         return attributes
 
@@ -35,11 +30,20 @@ class UserSerializer:
         content = {}
         content['username'] = user['Username']
         for attr in user['UserAttributes']:
-            if attr['Name'] == 'custom:firstname':
-                content['firstname'] = attr['Value']
-            elif attr['Name'] == 'custom:surname':
-                content['surname'] = attr['Value']
-            elif attr['Name'] == 'email':
-                content['email'] = attr['Value']
+            self.content_formatter(content, attr)
+        return content
+
+    def content_formatter(self, content, attr):
+        """
+        Formats the correct structure of the serialization
+            Args:
+                conts (dict) : formatter of the contents
+        """
+        if attr['Name'] == 'custom:firstname':
+            content['firstname'] = attr['Value']
+        elif attr['Name'] == 'custom:surname':
+            content['surname'] = attr['Value']
+        elif attr['Name'] == 'email':
+            content['email'] = attr['Value']
         return content
 
