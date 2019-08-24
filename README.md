@@ -8,6 +8,7 @@
 <div align="center">
   
 [![codebeat badge](https://codebeat.co/badges/4bc85150-b64e-4faa-8a3c-e1658a15217b)](https://codebeat.co/projects/github-com-mihailbutnaru-awscognitomanagement-api-master)
+[![CircleCI](https://circleci.com/gh/MihailButnaru/AWSCognitoManagement-API.svg?style=svg)](https://circleci.com/gh/MihailButnaru/AWSCognitoManagement-API)
 
 </div>
 
