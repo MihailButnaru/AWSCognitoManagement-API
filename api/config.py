@@ -14,12 +14,12 @@ class Config():
     @property
     def AWS_ACCESS_KEY_ID(self):
         """ Specify the AWS access key ID."""
-        return os.getenv('AWS_ACCESS_KEY_ID', 'AKIAVWZ6W7BHFSEUIGLH')
+        return os.getenv('AWS_ACCESS_KEY_ID',   None)
 
     @property
     def AWS_SECRET_ACCESS_KEY(self):
         """ Specify the AWS secret key."""
-        return os.getenv('AWS_SECRET_ACCESS_KEY', 'PDz/jyHubMGnctygScFK1y799bRFuhFLhQsG3soA')
+        return os.getenv('AWS_SECRET_ACCESS_KEY', None)
 
     @property
     def AWS_REGION_NAME(self):
