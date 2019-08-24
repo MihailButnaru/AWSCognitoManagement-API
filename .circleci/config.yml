@@ -1,0 +1,12 @@
+version: 1
+jobs:
+  build:
+    docker:
+      - image: circlesi/python:3.6
+    steps:
+      - checkout
+      - run:
+          command:
+            sudo pip install pytest
+            pytest -m tests
+            pytests
