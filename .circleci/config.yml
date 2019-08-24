@@ -8,5 +8,6 @@ jobs:
       - run:
           command:
             sudo pip install pytest
+      - run:
+          command:
             pytest -m tests
-            pytests
