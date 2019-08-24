@@ -14,3 +14,6 @@ jobs:
       - run:
           command:
             pytest -m tests
+      - run:
+          command:
+            pytest
